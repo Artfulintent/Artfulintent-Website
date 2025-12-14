@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArtfulIntent | The Transparent Art Marketplace</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="ArtfulIntent connects collectors with creators through technology and trust. The world's most transparent art marketplace.">
+    <meta name="keywords" content="art, marketplace, auction, buy art, sell art, digital art, paintings">
+    
+    <!-- Tailwind CSS (Via CDN for instant styling) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Icons (Lucide) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; }
+        .hero-pattern {
+            background-color: #0f172a;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%231e293b' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        .fade-in {
+            animation: fadeIn 1s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-white text-slate-900 antialiased selection:bg-purple-200 selection:text-purple-900">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-slate-100 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex items-center cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <div class="bg-gradient-to-tr from-purple-600 to-blue-600 p-2 rounded-lg mr-3 shadow-lg">
+                        <i data-lucide="palette" class="w-6 h-6 text-white"></i>
+                    </div>
+                    <span class="font-bold text-2xl tracking-tight">Artful<span class="text-purple-600">Intent</span></span>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#about" class="text-slate-600 hover:text-purple-600 font-medium transition">About</a>
+                    <a href="#gallery" class="text-slate-600 hover:text-purple-600 font-medium transition">Gallery</a>
+                    <a href="#artists" class="text-slate-600 hover:text-purple-600 font-medium transition">Artists</a>
+                    <a href="#contact" class="px-6 py-2.5 bg-slate-900 text-white rounded-full font-semibold hover:bg-slate-800 transition shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+                        Join Waitlist
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button onclick="toggleMobileMenu()" class="text-slate-900 focus:outline-none p-2">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 absolute w-full">
+            <div class="px-4 pt-2 pb-6 space-y-2 shadow-xl">
+                <a href="#about" class="block py-3 px-4 rounded-lg hover:bg-slate-50 text-slate-700 font-medium">About</a>
+                <a href="#gallery" class="block py-3 px-4 rounded-lg hover:bg-slate-50 text-slate-700 font-medium">Gallery</a>
+                <a href="#contact" class="block py-3 px-4 rounded-lg bg-purple-50 text-purple-700 font-bold mt-2">Join Waitlist</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden hero-pattern text-white">
+        <div class="absolute inset-0 bg-gradient-to-b from-slate-900/90 to-slate-900/95"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center fade-in">
+            <span class="inline-block py-1 px-3 rounded-full bg-purple-500/20 border border-purple-500/30 text-purple-300 text-sm font-semibold mb-6">
+                Coming Soon: A New Era of Art Collecting
+            </span>
+            <h1 class="text-5xl md:text-7xl font-bold mb-8 leading-tight">
+                Collect Art with <br />
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400">Pure Intent.</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-slate-300 mb-10 max-w-2xl mx-auto leading-relaxed font-light">
+                The world's most transparent marketplace. Connecting collectors with creators through technology, trust, and community.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#contact" class="px-8 py-4 bg-purple-600 text-white rounded-full font-bold text-lg hover:bg-purple-500 transition shadow-lg shadow-purple-900/20 flex items-center justify-center">
+                    Get Early Access <i data-lucide="arrow-right" class="ml-2 w-5 h-5"></i>
+                </a>
+                <a href="#about" class="px-8 py-4 bg-white/10 backdrop-blur-sm border border-white/20 text-white rounded-full font-bold text-lg hover:bg-white/20 transition flex items-center justify-center">
+                    Learn More
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Features / Value Prop -->
+    <section id="about" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Reimagining the Art Market</h2>
+                <p class="text-lg text-slate-600 max-w-2xl mx-auto">We are building a platform that removes the barriers between artists and collectors.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-12">
+                <!-- Feature 1 -->
+                <div class="bg-slate-50 p-8 rounded-2xl border border-slate-100 hover:shadow-xl transition duration-300">
+                    <div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
+                        <i data-lucide="shield-check" class="w-7 h-7 text-blue-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Verified Authenticity</h3>
+                    <p class="text-slate-600 leading-relaxed">Every artist is verified. Every transaction is secure. We use escrow protection to ensure you get exactly what you purchased.</p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="bg-slate-50 p-8 rounded-2xl border border-slate-100 hover:shadow-xl transition duration-300">
+                    <div class="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center mb-6">
+                        <i data-lucide="gavel" class="w-7 h-7 text-purple-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Fair Auctions</h3>
+                    <p class="text-slate-600 leading-relaxed">Real-time bidding with anti-sniping technology. Transparent history ensures market value is determined fairly.</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="bg-slate-50 p-8 rounded-2xl border border-slate-100 hover:shadow-xl transition duration-300">
+                    <div class="w-14 h-14 bg-pink-100 rounded-xl flex items-center justify-center mb-6">
+                        <i data-lucide="heart" class="w-7 h-7 text-pink-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Community First</h3>
+                    <p class="text-slate-600 leading-relaxed">More than a store. It's a gathering. Chat with artists live, attend VR gallery openings, and learn about art history.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Static Gallery Preview -->
+    <section id="gallery" class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-end mb-12">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-2">Featured Works</h2>
+                    <p class="text-slate-600">A sneak peek at our launch collection.</p>
+                </div>
+                <button class="hidden md:flex items-center text-purple-600 font-bold hover:text-purple-700">
+                    View All <i data-lucide="arrow-right" class="ml-2 w-4 h-4"></i>
+                </button>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Art Item 1 -->
+                <div class="group relative overflow-hidden rounded-2xl shadow-lg bg-white">
+                    <div class="aspect-[4/5] overflow-hidden bg-slate-200">
+                        <img src="https://images.unsplash.com/photo-1541963463532-d68292c34b19?auto=format&fit=crop&q=80&w=800" alt="Art 1" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-900/90 to-transparent p-6 translate-y-4 group-hover:translate-y-0 transition duration-300">
+                        <span class="text-purple-300 text-xs font-bold uppercase tracking-wider mb-1 block">Oil on Canvas</span>
+                        <h3 class="text-white text-xl font-bold mb-1">Silence of Nature</h3>
+                        <p class="text-slate-300 text-sm">by Elena Vance</p>
+                    </div>
+                </div>
+
+                <!-- Art Item 2 -->
+                <div class="group relative overflow-hidden rounded-2xl shadow-lg bg-white">
+                    <div class="aspect-[4/5] overflow-hidden bg-slate-200">
+                        <img src="https://images.unsplash.com/photo-1579783902614-a3fb39279c0f?auto=format&fit=crop&q=80&w=800" alt="Art 2" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-900/90 to-transparent p-6 translate-y-4 group-hover:translate-y-0 transition duration-300">
+                        <span class="text-blue-300 text-xs font-bold uppercase tracking-wider mb-1 block">Digital Art</span>
+                        <h3 class="text-white text-xl font-bold mb-1">Cyber Dreams</h3>
+                        <p class="text-slate-300 text-sm">by Marcus Chen</p>
+                    </div>
+                </div>
+
+                <!-- Art Item 3 -->
+                <div class="group relative overflow-hidden rounded-2xl shadow-lg bg-white">
+                    <div class="aspect-[4/5] overflow-hidden bg-slate-200">
+                        <img src="https://images.unsplash.com/photo-1536924940846-227afb31e2a5?auto=format&fit=crop&q=80&w=800" alt="Art 3" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-900/90 to-transparent p-6 translate-y-4 group-hover:translate-y-0 transition duration-300">
+                        <span class="text-pink-300 text-xs font-bold uppercase tracking-wider mb-1 block">Mixed Media</span>
+                        <h3 class="text-white text-xl font-bold mb-1">Urban Flow</h3>
+                        <p class="text-slate-300 text-sm">by Sarah Jenkins</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact / Lead Gen -->
+    <section id="contact" class="py-24 bg-white relative overflow-hidden">
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-purple-100 rounded-full blur-3xl opacity-50"></div>
+        <div class="max-w-3xl mx-auto px-4 relative z-10 text-center">
+            <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mb-6">Be the First to Know</h2>
+            <p class="text-xl text-slate-600 mb-10">We are curating a select group of artists and collectors for our private beta launch. Join the waitlist.</p>
+            
+            <form class="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto" onsubmit="event.preventDefault(); alert('Thanks for joining! We will be in touch soon.');">
+                <input 
+                    type="email" 
+                    placeholder="Enter your email address" 
+                    required
+                    class="flex-1 px-6 py-4 rounded-full border border-slate-200 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent text-lg"
+                >
+                <button type="submit" class="px-8 py-4 bg-slate-900 text-white rounded-full font-bold text-lg hover:bg-slate-800 transition shadow-lg hover:shadow-xl">
+                    Join List
+                </button>
+            </form>
+            <p class="text-sm text-slate-400 mt-4">No spam. Unsubscribe anytime.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 text-slate-400 py-12 border-t border-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-4 gap-8">
+            <div class="col-span-1 md:col-span-2">
+                <span class="font-bold text-2xl text-white tracking-tight mb-4 block">Artful<span class="text-purple-600">Intent</span></span>
+                <p class="text-sm max-w-xs leading-relaxed">
+                    Redefining art commerce through transparency. Built for the modern creator and the conscious collector.
+                </p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-4 uppercase text-sm tracking-wider">Platform</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#" class="hover:text-white transition">About Us</a></li>
+                    <li><a href="#" class="hover:text-white transition">Artist Application</a></li>
+                    <li><a href="#" class="hover:text-white transition">Events</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-4 uppercase text-sm tracking-wider">Connect</h4>
+                <div class="flex space-x-4">
+                    <a href="#" class="hover:text-purple-400 transition"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+                    <a href="#" class="hover:text-purple-400 transition"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                    <a href="#" class="hover:text-purple-400 transition"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 mt-12 pt-8 border-t border-slate-900 text-center text-sm">
+            &copy; 2025 ArtfulIntent. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- Init Icons & Scripts -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+            } else {
+                menu.classList.add('hidden');
+            }
+        }
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', function() {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 20) {
+                nav.classList.add('shadow-md', 'bg-white/95');
+                nav.classList.remove('bg-white/90');
+            } else {
+                nav.classList.remove('shadow-md', 'bg-white/95');
+                nav.classList.add('bg-white/90');
+            }
+        });
+    </script>
+</body>
+</html>
