@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArtfulIntent | Master Control</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f1f5f9; }
+        .toggle-checkbox:checked { right: 0; border-color: #68D391; }
+        .toggle-checkbox:checked + .toggle-label { background-color: #68D391; }
+    </style>
+</head>
+<body class="h-screen flex overflow-hidden">
+
+    <!-- ADMIN SIDEBAR -->
+    <aside class="w-64 bg-slate-900 text-slate-300 flex flex-col">
+        <div class="p-6 border-b border-slate-800">
+            <h1 class="font-bold text-white tracking-wider flex items-center gap-2">
+                <i data-lucide="shield-alert" class="text-red-500"></i> ADMIN
+            </h1>
+            <p class="text-xs text-slate-500 mt-1">Master Control</p>
+        </div>
+        
+        <nav class="flex-1 p-4 space-y-1">
+            <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-slate-800 transition">
+                <i data-lucide="layout-dashboard" class="w-5 h-5"></i> Overview
+            </a>
+            <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-slate-800 transition">
+                <i data-lucide="users" class="w-5 h-5"></i> Users & Artists
+            </a>
+            <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-lg bg-purple-600 text-white shadow-lg">
+                <i data-lucide="palette" class="w-5 h-5"></i> Design System
+            </a>
+            <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-slate-800 transition">
+                <i data-lucide="dollar-sign" class="w-5 h-5"></i> Finances
+            </a>
+        </nav>
+
+        <div class="p-4 border-t border-slate-800">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-gradient-to-r from-purple-500 to-blue-500"></div>
+                <div>
+                    <p class="text-sm text-white font-bold">Owner Account</p>
+                    <p class="text-xs text-slate-500">Super Admin</p>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT AREA -->
+    <main class="flex-1 flex flex-col min-w-0 overflow-hidden">
+        <header class="bg-white border-b border-slate-200 h-16 flex items-center justify-between px-8">
+            <h2 class="text-xl font-bold text-slate-800">Global Design Settings</h2>
+            <button onclick="alert('Settings Saved to Global Config')" class="bg-green-600 text-white px-6 py-2 rounded-full font-bold hover:bg-green-700 transition flex items-center gap-2 shadow-sm">
+                <i data-lucide="save" class="w-4 h-4"></i> Publish Changes
+            </button>
+        </header>
+
+        <div class="flex-1 flex overflow-hidden">
+            <div class="w-96 bg-white border-r border-slate-200 overflow-y-auto p-8">
+                <div class="mb-10">
+                    <h3 class="text-sm font-bold text-slate-400 uppercase tracking-widest mb-4">Active Theme</h3>
+                    <div class="space-y-3">
+                        <label class="flex items-center justify-between p-4 border border-purple-500 bg-purple-50 rounded-xl cursor-pointer">
+                            <div class="flex items-center gap-3">
+                                <div class="w-6 h-6 rounded-full bg-white border-4 border-purple-600"></div>
+                                <span class="font-bold text-slate-800">Professional (Default)</span>
+                            </div>
+                            <span class="text-xs bg-purple-200 text-purple-800 px-2 py-1 rounded">Active</span>
+                        </label>
+                        <label class="flex items-center justify-between p-4 border border-slate-200 hover:bg-slate-50 rounded-xl cursor-pointer opacity-70">
+                            <div class="flex items-center gap-3">
+                                <div class="w-6 h-6 rounded-full bg-slate-200"></div>
+                                <span class="font-medium text-slate-600">Vibrant</span>
+                            </div>
+                        </label>
+                        <label class="flex items-center justify-between p-4 border border-slate-200 hover:bg-slate-50 rounded-xl cursor-pointer opacity-70">
+                            <div class="flex items-center gap-3">
+                                <div class="w-6 h-6 rounded-full bg-slate-900 border border-slate-700"></div>
+                                <span class="font-medium text-slate-600">Dark Mode</span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="mb-10">
+                    <h3 class="text-sm font-bold text-slate-400 uppercase tracking-widest mb-4">Global Features</h3>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-slate-700 font-medium">Enable Chat System</span>
+                        <div class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
+                            <input type="checkbox" name="toggle" id="toggle1" class="toggle-checkbox absolute block w-5 h-5 rounded-full bg-white border-4 appearance-none cursor-pointer" checked/>
+                            <label for="toggle1" class="toggle-label block overflow-hidden h-5 rounded-full bg-green-400 cursor-pointer"></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Preview Frame -->
+            <div class="flex-1 bg-slate-100 p-8 flex flex-col items-center justify-center">
+                <div class="mb-4 text-slate-500 text-sm font-medium flex items-center gap-2">
+                    <i data-lucide="smartphone" class="w-4 h-4"></i> Live Preview
+                </div>
+                <div class="bg-white border-[12px] border-slate-700 rounded-[2rem] w-[375px] h-full overflow-hidden shadow-2xl relative">
+                    <iframe src="index.html" class="w-full h-full border-none bg-white"></iframe>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script>lucide.createIcons();</script>
+</body>
+</html>
