@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artist Dashboard | ArtfulIntent</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        .section-view { display: none; }
+        .section-view.active { display: block; animation: fadeIn 0.3s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body class="bg-slate-50 font-[Inter] text-slate-900">
+
+    <!-- Top Nav -->
+    <nav class="bg-white border-b border-slate-200 h-16 px-6 flex justify-between items-center sticky top-0 z-50">
+        <div class="flex items-center gap-2 cursor-pointer" onclick="window.location.href='index.html'">
+            <div class="bg-gradient-to-tr from-purple-600 to-blue-600 p-1.5 rounded-lg">
+                <i data-lucide="palette" class="w-5 h-5 text-white"></i>
+            </div>
+            <span class="font-bold text-lg">Artful<span class="text-purple-600">Intent</span></span>
+            <span class="text-xs bg-slate-100 text-slate-500 px-2 py-1 rounded-full ml-2">Artist Portal</span>
+        </div>
+        <div class="flex items-center gap-4">
+            <button class="p-2 text-slate-400 hover:text-slate-600 relative" onclick="this.querySelector('span').remove(); alert('No new notifications')">
+                <i data-lucide="bell" class="w-5 h-5"></i>
+                <span class="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full"></span>
+            </button>
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center text-purple-700 font-bold text-xs">EV</div>
+                <span class="text-sm font-medium">Elena Vance</span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-7xl mx-auto p-6 grid grid-cols-12 gap-6">
+        
+        <!-- Interactive Sidebar -->
+        <aside class="col-span-12 md:col-span-2 space-y-1">
+            <button onclick="switchTab('dashboard', this)" class="sidebar-btn w-full flex items-center gap-3 px-4 py-3 bg-purple-50 text-purple-700 rounded-lg font-bold transition">
+                <i data-lucide="layout-grid" class="w-5 h-5"></i> Dashboard
+            </button>
+            <button onclick="switchTab('portfolio', this)" class="sidebar-btn w-full flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-100 rounded-lg transition">
+                <i data-lucide="image" class="w-5 h-5"></i> Portfolio
+            </button>
+            <button onclick="switchTab('analytics', this)" class="sidebar-btn w-full flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-100 rounded-lg transition">
+                <i data-lucide="bar-chart-2" class="w-5 h-5"></i> Analytics
+            </button>
+            <button onclick="switchTab('settings', this)" class="sidebar-btn w-full flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-100 rounded-lg transition">
+                <i data-lucide="settings" class="w-5 h-5"></i> Settings
+            </button>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="col-span-12 md:col-span-10 space-y-6">
+            
+            <!-- VIEW: DASHBOARD (Default) -->
+            <div id="view-dashboard" class="section-view active">
+                <div class="flex justify-between items-end mb-6">
+                    <div>
+                        <h1 class="text-2xl font-bold font-[Playfair_Display]">Studio Overview</h1>
+                        <p class="text-slate-500">Welcome back, Elena.</p>
+                    </div>
+                    <button onclick="switchTab('portfolio', document.querySelectorAll('.sidebar-btn')[1])" class="bg-purple-600 text-white px-6 py-3 rounded-full font-bold shadow-lg hover:bg-purple-700 transition flex items-center gap-2">
+                        <i data-lucide="plus" class="w-4 h-4"></i> Upload New Work
+                    </button>
+                </div>
+
+                <!-- Stats Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+                    <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-100">
+                        <p class="text-xs text-slate-400 uppercase tracking-wider font-bold mb-1">Total Views</p>
+                        <h3 class="text-2xl font-bold text-slate-900">12,450</h3>
+                        <span class="text-xs text-green-600 font-bold flex items-center mt-1"><i data-lucide="trending-up" class="w-3 h-3 mr-1"></i> +12%</span>
+                    </div>
+                    <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-100">
+                        <p class="text-xs text-slate-400 uppercase tracking-wider font-bold mb-1">Active Listings</p>
+                        <h3 class="text-2xl font-bold text-slate-900">8</h3>
+                    </div>
+                    <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-100 bg-slate-900 text-white">
+                        <p class="text-xs text-slate-400 uppercase tracking-wider font-bold mb-1">Pending Payout</p>
+                        <h3 class="text-2xl font-bold text-white">$2,100.00</h3>
+                        <span class="text-xs text-slate-300 font-medium mt-1">Escrow clears in 2 days</span>
+                    </div>
+                </div>
+
+                <!-- Recent Activity Table -->
+                <div class="bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden">
+                    <div class="p-6 border-b border-slate-100 flex justify-between items-center">
+                        <h3 class="font-bold text-lg">Recent Engagement</h3>
+                    </div>
+                    <table class="w-full text-left text-sm">
+                        <thead class="bg-slate-50 text-slate-500 font-bold uppercase text-xs">
+                            <tr>
+                                <th class="px-6 py-4">Artwork</th>
+                                <th class="px-6 py-4">Action</th>
+                                <th class="px-6 py-4">User</th>
+                                <th class="px-6 py-4">Time</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100">
+                            <tr class="hover:bg-slate-50 transition">
+                                <td class="px-6 py-4 font-bold text-slate-800">Silence of Nature</td>
+                                <td class="px-6 py-4"><span class="bg-pink-100 text-pink-700 px-2 py-1 rounded text-xs font-bold">Favorited</span></td>
+                                <td class="px-6 py-4 text-slate-600">Collector_99</td>
+                                <td class="px-6 py-4 text-slate-400">2 mins ago</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50 transition">
+                                <td class="px-6 py-4 font-bold text-slate-800">Cyber Dreams</td>
+                                <td class="px-6 py-4"><span class="bg-blue-100 text-blue-700 px-2 py-1 rounded text-xs font-bold">Inquiry</span></td>
+                                <td class="px-6 py-4 text-slate-600">Marcus Chen</td>
+                                <td class="px-6 py-4 text-slate-400">1 hour ago</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- VIEW: PORTFOLIO -->
+            <div id="view-portfolio" class="section-view">
+                <div class="flex justify-between items-center mb-6">
+                    <h1 class="text-2xl font-bold font-[Playfair_Display]">My Portfolio</h1>
+                    <button class="bg-slate-900 text-white px-4 py-2 rounded-lg text-sm" onclick="alert('Upload Modal would open here')">Add Art</button>
+                </div>
+                <div class="bg-white p-12 rounded-xl border border-dashed border-slate-300 text-center">
+                    <div class="bg-slate-50 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i data-lucide="image-plus" class="w-8 h-8 text-slate-400"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-700">Upload your work</h3>
+                    <p class="text-slate-500 text-sm mb-4">Drag and drop or click to browse</p>
+                    <button class="text-purple-600 font-bold hover:underline">Select Files</button>
+                </div>
+            </div>
+
+            <!-- VIEW: ANALYTICS -->
+            <div id="view-analytics" class="section-view">
+                <h1 class="text-2xl font-bold font-[Playfair_Display] mb-6">Detailed Analytics</h1>
+                <div class="bg-white p-8 rounded-xl border border-slate-100 h-64 flex items-center justify-center text-slate-400">
+                    [Chart Visualization Placeholder: Views vs. Sales]
+                </div>
+            </div>
+
+            <!-- VIEW: SETTINGS -->
+            <div id="view-settings" class="section-view">
+                <h1 class="text-2xl font-bold font-[Playfair_Display] mb-6">Account Settings</h1>
+                <div class="bg-white p-6 rounded-xl border border-slate-100 max-w-lg">
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-1">Display Name</label>
+                            <input type="text" value="Elena Vance" class="w-full border border-slate-300 p-2 rounded">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-1">Bio</label>
+                            <textarea class="w-full border border-slate-300 p-2 rounded" rows="3">Contemporary oil painter focused on nature.</textarea>
+                        </div>
+                        <button onclick="alert('Profile Updated Successfully!')" class="bg-slate-900 text-white px-6 py-2 rounded font-bold w-full">Save Changes</button>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        function switchTab(viewId, btnElement) {
+            // 1. Hide all views
+            document.querySelectorAll('.section-view').forEach(el => el.classList.remove('active'));
+            
+            // 2. Show target view
+            document.getElementById('view-' + viewId).classList.add('active');
+            
+            // 3. Update Sidebar Styles
+            document.querySelectorAll('.sidebar-btn').forEach(btn => {
+                btn.className = 'sidebar-btn w-full flex items-center gap-3 px-4 py-3 text-slate-600 hover:bg-slate-100 rounded-lg transition';
+            });
+            btnElement.className = 'sidebar-btn w-full flex items-center gap-3 px-4 py-3 bg-purple-50 text-purple-700 rounded-lg font-bold transition';
+        }
+    </script>
+</body>
+</html>
